@@ -1,0 +1,17 @@
+fish_repo_version_string: "{{ fish_repo_strings[ansible_facts.distribution][ansible_facts.distribution_major_version | int] }}"
+
+fish_repo_strings:
+  RedHat:
+    5: RedHat_RHEL-{{ ansible_facts.distribution_major_version }}
+    6: RedHat_RHEL-{{ ansible_facts.distribution_major_version }}
+    7: RHEL_{{ ansible_facts.distribution_major_version }}
+
+  CentOS:
+    5: ''
+    6: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
+    7: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
+
+  Fedora:
+    27: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
+    28: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
+    29: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"

@@ -6,5 +6,9 @@
     - "{{ ansible_facts.os_family }}.yml"
     - "{{ ansible_facts.os_distribution }}.yml"
     - main.yml
+  tags:
+    - fish
 
 - include: "install-{{ ansible_facts.os_family }}.yml"
+  tags:
+    - fish

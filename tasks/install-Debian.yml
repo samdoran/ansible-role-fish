@@ -1,6 +1,25 @@
-- name: DEBIAN | Add fish repository
+- block:
+    - name: DEBIAN | Add fish repository key
+      apt_key:
+        url: https://download.opensuse.org/repositories/shells:fish:release:2/Debian_{{ ansible_facts.distribution_major_version }}.0/Release.key
+        state: present
+      tags:
+        - fish
+
+    - name: DEBIAN | Add fish repository
+      apt_repository:
+        filename: shells_fish_release_2
+        repo: deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_{{ ansible_facts.distribution_major_version }}.0/ /
+      tags:
+        - fish
+  when: ansible_facts.distribution == 'Debian'
+
+- name: UBUNTU | Add fish repository
   apt_repository:
-    repo: deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_{{ ansible_facts.distribution_major_version }}.0/ /
+    filename: shells_fish_release_2
+    repo: deb http://ppa.launchpad.net/fish-shell/release-2/ubuntu {{ ansible_facts.lsb.codename | lower }} main
+    state: present
+  when: ansible_facts.distribution == 'Ubuntu'
 
 - name: DEBIAN | Install fish
   apt:
@@ -8,3 +27,5 @@
     allow_unauthenticated: true
     state: latest
     cache_valid_time: 600
+  tags:
+    - fish

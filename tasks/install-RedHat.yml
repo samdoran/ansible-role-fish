@@ -7,9 +7,13 @@
     enabled: true
     gpgcheck: true
     file: fish
+  tags:
+    - fish
 
 - name: RHEL | Install Fish
   action: "{{ ansible_facts.pkg_mgr }}"
   args:
     name: fish
     state: latest
+  tags:
+    - fish

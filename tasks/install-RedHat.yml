@@ -1,11 +1,11 @@
 - name: RHEL | Create yum repo
   yum_repository:
-    name: shells_fish_release_2
-    description: Fish shell - 2.x release series ({{ fish_repo_version_string }})
-    baseurl: http://download.opensuse.org/repositories/shells:/fish:/release:/2/{{ fish_repo_version_string }}/
-    gpgkey: http://download.opensuse.org/repositories/shells:/fish:/release:/2/{{ fish_repo_version_string }}/repodata/repomd.xml.key
-    enabled: true
-    gpgcheck: true
+    name: shells_fish_release_{{ fish_release_version }}
+    description: Fish shell - {{ fish_release_version }}.x release series ({{ fish_repo_version_string }})
+    baseurl: http://download.opensuse.org/repositories/shells:/fish:/release:/{{ fish_release_version }}/{{ fish_repo_version_string }}/
+    gpgkey: http://download.opensuse.org/repositories/shells:/fish:/release:/{{ fish_release_version }}/{{ fish_repo_version_string }}/repodata/repomd.xml.key
+    enabled: yes
+    gpgcheck: yes
     file: fish
   tags:
     - fish

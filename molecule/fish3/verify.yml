@@ -11,6 +11,6 @@
     - name: Ensure proper fish version is installed
       assert:
         that:
-          - fish_version is version('2', '==')
+          - fish_version is version('3', '==')
       vars:
         fish_version: "{{ fish_version_check.stdout.split(' ')[-1].split('.')[0] }}"

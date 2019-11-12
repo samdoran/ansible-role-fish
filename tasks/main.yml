@@ -1,3 +1,9 @@
+- name: Ensure fish version is valid
+  assert:
+    that:
+      - fish_release_version in fish_valid_versions
+    fail_msg: Invalid fish_release_version '{{ fish_release_version }}'. Valid versions are {{ fish_valid_versions | join(', ') }}.
+
 - name: Include distribution specific variables
   include_vars: "{{ lookup('first_found', params) }}"
   vars:

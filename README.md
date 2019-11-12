@@ -13,7 +13,9 @@ An open mind. 😉
 Role Variables
 --------------
 
-None
+| Name              | Default Value       | Description          |
+|-------------------|---------------------|----------------------|
+| `fish_release_version` | `2` | Major version of `fish` to install. Valide values are 2 or 3. |
 
 
 Dependencies

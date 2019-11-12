@@ -1,6 +1,9 @@
 - hosts: all
   become: yes
 
+  vars:
+    fish_release_version: 3
+
   tasks:
     - debug:
         msg: >-

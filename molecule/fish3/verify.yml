@@ -1,0 +1,16 @@
+- hosts: all
+  become: no
+  gather_facts: no
+
+  tasks:
+    - name: Get fish version
+      command: fish --version
+      register: fish_version_check
+      changed_when: no
+
+    - name: Ensure proper fish version is installed
+      assert:
+        that:
+          - fish_version is version('2', '==')
+      vars:
+        fish_version: "{{ fish_version_check.stdout.split(' ')[-1].split('.')[0] }}"

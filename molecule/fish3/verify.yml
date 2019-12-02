@@ -1,6 +1,6 @@
 - hosts: all
   become: no
-  gather_facts: no
+  gather_facts: yes
 
   tasks:
     - name: Get fish version

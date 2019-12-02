@@ -7,5 +7,6 @@
           Testing with Ansible {{ ansible_version.full }} using Python {{ ansible_facts.python_version }}
           on {{ ansible_facts.distribution }} {{ ansible_facts.distribution_version }}
 
-    - import_role:
+    - include_role:
         name: fish
+      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version != 'Debian10'

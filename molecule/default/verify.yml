@@ -1,12 +1,13 @@
 - hosts: all
-  become: yes
-  gather_facts: no
+  become: no
+  gather_facts: yes
 
   tasks:
     - name: Get fish version
       command: fish --version
       register: fish_version_check
       changed_when: no
+      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version != 'Debian10'
 
     - name: Ensure proper fish version is installed
       assert:
@@ -14,3 +15,4 @@
           - fish_version is version('2', '==')
       vars:
         fish_version: "{{ fish_version_check.stdout.split(' ')[-1].split('.')[0] }}"
+      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version != 'Debian10'

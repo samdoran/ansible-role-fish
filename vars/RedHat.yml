@@ -27,3 +27,5 @@ fish_repo_strings:
     Fedora:
       28: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
       29: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
+      30: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
+      31: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"

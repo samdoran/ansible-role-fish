@@ -15,6 +15,8 @@ env:
     - MOLECULE_DISTRIBUTION: debian8
     - MOLECULE_DISTRIBUTION: debian9
     - MOLECULE_DISTRIBUTION: debian10
+    - MOLECULE_DISTRIBUTION: fedora30
+    - MOLECULE_DISTRIBUTION: fedora31
 
 install:
   - pip install molecule docker

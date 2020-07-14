@@ -3,6 +3,17 @@
 
   vars:
     fish_release_version: 3
+    distros:
+      # Fish 3
+      - Debian9
+      - Debian10
+      - RedHat7
+      - RedHat8
+      - Fedora30
+      - Fedora31
+      - Ubuntu16
+      - Ubuntu18
+      - Ubuntu20
 
   tasks:
     - debug:
@@ -10,5 +21,6 @@
           Testing with Ansible {{ ansible_version.full }} using Python {{ ansible_facts.python_version }}
           on {{ ansible_facts.distribution }} {{ ansible_facts.distribution_version }}
 
-    - import_role:
+    - include_role:
         name: fish
+      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version in distros

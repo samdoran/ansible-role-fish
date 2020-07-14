@@ -2,35 +2,25 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/default/yamllint.yml
+lint: |
+  ansible-lint -x 204,403,502
+  yamllint -c molecule/default/yamllint.yml .
 platforms:
   - name: fish3-test
-    image: "quay.io/samdoran/${MOLECULE_DISTRIBUTION:-centos7}-ansible:latest"
+    image: "quay.io/samdoran/${MOLECULE_DISTRIBUTION:-centos8}-ansible:latest"
     command: ${MOLECULE_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
+    privileged: yes
+    pre_build_image: yes
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
-    options:
-      exclude:
-        - molecule/fish3/playbook.yml
-      x:
-        - 204  # Lines should be no longer than 160 chars
-        - 403  # Package installs should not use latest
-        - 502  # All tasks should be named
+  config_options:
+    defaults:
+      stdout_callback: debug
   playbooks:
-    converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
+    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 scenario:
   name: fish3
 verifier:
   name: ansible
-  lint:
-    name: ansible-lint
-    enabled: no

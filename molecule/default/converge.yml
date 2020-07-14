@@ -1,6 +1,18 @@
 - hosts: all
   become: yes
 
+  vars:
+    distros:
+      # Fish 2
+      - Debian8
+      - Debian9
+      - RedHat6
+      - RedHat7
+      - Fedora25
+      - Fedora26
+      - Fedora37
+      - Ubuntu16
+
   tasks:
     - debug:
         msg: >-
@@ -9,4 +21,4 @@
 
     - include_role:
         name: fish
-      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version != 'Debian10'
+      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version in distros

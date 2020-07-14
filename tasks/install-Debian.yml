@@ -1,18 +1,18 @@
-- name: DEBIAN | Require fish >= 3 on Debian >= 10
+- name: DEBIAN | Require fish >= 3 on Debian >= 9
   fail:
-    msg: Only fish >= 3 is supported on Debian >= 10
+    msg: Only fish >= 3 is supported on Debian >= 9
   when:
     - ansible_facts.distribution == 'Debian'
     - fish_release_version is version('3', '<')
-    - ansible_facts.distribution_major_version is version('10', '>=')
+    - ansible_facts.distribution_major_version is version('9', '>=')
   tags:
     - fish
 
 - name: DEBIAN | Add fish repository key
   apt_key:
-    keyserver: "{{ fish_apt_keyserver | default(omit) }}"
-    url: "{{ fish_apt_key_url | default(omit) }}"
-    id: "{{ fish_apt_key_id | default(omit) }}"
+    keyserver: "{{ _fish_apt_keyserver | default(omit) }}"
+    url: "{{ _fish_apt_key_url | default(omit) }}"
+    id: "{{ _fish_apt_key_id | default(omit) }}"
     state: present
   tags:
     - fish
@@ -20,14 +20,14 @@
 - name: DEBIAN | Add fish repository
   apt_repository:
     filename: shells_fish_release_{{ fish_release_version }}
-    repo: "{{ fish_apt_repo_url }}"
+    repo: "{{ _fish_apt_repo_url }}"
   tags:
     - fish
 
 - name: DEBIAN | Install fish
   apt:
     name: fish
-    allow_unauthenticated: true
+    allow_unauthenticated: yes
     state: latest
     cache_valid_time: 600
   tags:

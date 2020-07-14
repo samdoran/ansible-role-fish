@@ -2,17 +2,30 @@
   become: no
   gather_facts: yes
 
-  tasks:
-    - name: Get fish version
-      command: fish --version
-      register: fish_version_check
-      changed_when: no
-      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version != 'Debian10'
+  vars:
+    distros:
+      # Fish 2
+      - Debian8
+      - Debian9
+      - RedHat6
+      - RedHat7
+      - Fedora25
+      - Fedora26
+      - Fedora37
+      - Ubuntu16
 
-    - name: Ensure proper fish version is installed
-      assert:
-        that:
-          - fish_version is version('2', '==')
-      vars:
-        fish_version: "{{ fish_version_check.stdout.split(' ')[-1].split('.')[0] }}"
-      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version != 'Debian10'
+  tasks:
+    - name: Verify
+      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version in distros
+      block:
+        - name: Get fish version
+          command: fish --version
+          register: fish_version_check
+          changed_when: no
+
+        - name: Ensure proper fish version is installed
+          assert:
+            that:
+              - fish_version is version('2', '==')
+          vars:
+            fish_version: "{{ fish_version_check.stdout.split(' ')[-1].split('.')[0] }}"

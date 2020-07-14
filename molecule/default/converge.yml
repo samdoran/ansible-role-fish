@@ -3,15 +3,16 @@
 
   vars:
     distros:
-      # Fish 2
-      - Debian8
       - Debian9
-      - RedHat6
+      - Debian10
       - RedHat7
-      - Fedora25
-      - Fedora26
-      - Fedora27
+      - RedHat8
+      - Fedora30
+      - Fedora31
+      - Fedora32
       - Ubuntu16
+      - Ubuntu18
+      - Ubuntu20
 
   tasks:
     - debug:

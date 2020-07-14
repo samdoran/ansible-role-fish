@@ -2,19 +2,16 @@
   become: yes
 
   vars:
-    fish_release_version: 3
+    fish_release_version: 2
     distros:
-      # Fish 3
+      - Debian8
       - Debian9
-      - Debian10
+      - RedHat6
       - RedHat7
-      - RedHat8
-      - Fedora30
-      - Fedora31
-      - Fedora32
+      - Fedora25
+      - Fedora26
+      - Fedora27
       - Ubuntu16
-      - Ubuntu18
-      - Ubuntu20
 
   tasks:
     - debug:

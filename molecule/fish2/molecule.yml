@@ -6,7 +6,7 @@ lint: |
   ansible-lint -x 204,403,502
   yamllint -c molecule/default/yamllint.yml .
 platforms:
-  - name: fish3-test
+  - name: fish2-test
     image: "quay.io/samdoran/${MOLECULE_DISTRIBUTION:-centos8}-ansible:latest"
     command: ${MOLECULE_COMMAND:-""}
     volumes:
@@ -21,6 +21,6 @@ provisioner:
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 scenario:
-  name: fish3
+  name: fish2
 verifier:
   name: ansible

@@ -4,17 +4,14 @@
 
   vars:
     distros:
-      # Fish 3
+      - Debian8
       - Debian9
-      - Debian10
+      - RedHat6
       - RedHat7
-      - RedHat8
-      - Fedora30
-      - Fedora31
-      - Fedora32
+      - Fedora25
+      - Fedora26
+      - Fedora37
       - Ubuntu16
-      - Ubuntu18
-      - Ubuntu20
 
   tasks:
     - name: Verify
@@ -28,6 +25,6 @@
         - name: Ensure proper fish version is installed
           assert:
             that:
-              - fish_version is version('3', '==')
+              - fish_version is version('2', '==')
           vars:
             fish_version: "{{ fish_version_check.stdout.split(' ')[-1].split('.')[0] }}"

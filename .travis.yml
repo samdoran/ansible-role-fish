@@ -18,6 +18,7 @@ env:
     - MOLECULE_DISTRIBUTION: debian10
     - MOLECULE_DISTRIBUTION: fedora30
     - MOLECULE_DISTRIBUTION: fedora31
+    - MOLECULE_DISTRIBUTION: fedora32
 
 install:
   - pip install molecule[lint] docker

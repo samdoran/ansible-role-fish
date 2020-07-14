@@ -5,20 +5,20 @@
   vars:
     distros:
       # Fish 3
-      - Debian8
       - Debian9
-      - RedHat6
+      - Debian10
       - RedHat7
-      - Fedora25
-      - Fedora26
-      - Fedora27
+      - RedHat8
+      - Fedora30
+      - Fedora31
+      - Fedora32
       - Ubuntu16
       - Ubuntu18
       - Ubuntu20
 
   tasks:
     - name: Verify
-      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version not in distros
+      when: ansible_facts.distribution ~ ansible_facts.distribution_major_version in distros
       block:
         - name: Get fish version
           command: fish --version

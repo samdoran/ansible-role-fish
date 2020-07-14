@@ -10,7 +10,7 @@
       - RedHat7
       - Fedora25
       - Fedora26
-      - Fedora37
+      - Fedora27
       - Ubuntu16
 
   tasks:

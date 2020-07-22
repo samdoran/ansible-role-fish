@@ -30,6 +30,10 @@ galaxy_info:
         - 31
         - 32
 
+    - name: macOS
+      versions:
+        - all
+
   galaxy_tags:
     - system
     - shell

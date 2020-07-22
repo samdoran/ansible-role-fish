@@ -9,6 +9,7 @@ Requirements
 ------------
 
 An open mind. 😉
+If running this role against macOS, Homebrew must be installed.
 
 Role Variables
 --------------

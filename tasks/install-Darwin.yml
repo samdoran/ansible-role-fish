@@ -1,0 +1,6 @@
+- name: MACOS | Install fish
+  homebrew:
+    name: fish
+    state: latest
+  tags:
+    - fish

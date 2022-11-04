@@ -20,11 +20,13 @@ _fish_repo_strings:
       6: RedHat_RHEL-{{ ansible_facts.distribution_major_version }}
       7: RHEL_{{ ansible_facts.distribution_major_version }}
       8: CentOS_{{ ansible_facts.distribution_major_version }}
+      9: CentOS_8
 
     CentOS:
       6: RedHat_RHEL-{{ ansible_facts.distribution_major_version }}
       7: RHEL_{{ ansible_facts.distribution_major_version }}
       8: CentOS_{{ ansible_facts.distribution_major_version }}
+      9: CentOS_8
 
     Fedora:
       28: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"

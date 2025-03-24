@@ -3,6 +3,8 @@
     that:
       - fish_release_version in _fish_valid_versions
     fail_msg: Invalid fish_release_version '{{ fish_release_version }}'. Valid versions are {{ _fish_valid_versions | join(', ') }}.
+  tags:
+    - fish
 
 - name: Include distribution specific variables
   include_vars: "{{ lookup('first_found', params) }}"

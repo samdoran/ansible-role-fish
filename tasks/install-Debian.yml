@@ -9,11 +9,9 @@
     - fish
 
 - name: DEBIAN | Add fish repository key
-  apt_key:
-    keyserver: "{{ _fish_apt_keyserver | default(omit) }}"
-    url: "{{ _fish_apt_key_url | default(omit) }}"
-    id: "{{ _fish_apt_key_id | default(omit) }}"
-    state: present
+  get_url:
+    url: "{{ _fish_apt_key_url }}"
+    dest: /etc/apt/trusted.gpg.d/shells_fish_release_{{ fish_release_version }}.asc
   tags:
     - fish
 

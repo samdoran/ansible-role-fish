@@ -34,3 +34,7 @@ _fish_repo_strings:
       30: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
       31: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
       32: "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}"
+
+  version_4:
+    RedHat:
+      10: Fedora_41
